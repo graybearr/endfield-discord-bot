@@ -9,7 +9,7 @@ export const data = new SlashCommandBuilder()
 
 export async function execute(interaction: ChatInputCommandInteraction) {
     const user = db.getUser(interaction.user.id);
-    if (!user) return interaction.reply({ content: '⚠️ 등록된 계정이 없어요.' });
+    if (!user) return interaction.reply({ content: '⚠️ 등록된 계정이 없어요. `/register`를 먼저 입력해보세요.' });
 
     await interaction.deferReply();
 
