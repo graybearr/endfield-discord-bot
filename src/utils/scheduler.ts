@@ -1,4 +1,4 @@
-import { Client, EmbedBuilder, TextChannel } from 'discord.js';
+import { Client, EmbedBuilder, TextChannel, ThreadChannel } from 'discord.js';
 import cron from 'node-cron';
 import db from './db';
 import { doAttendance } from './attendance';
@@ -61,7 +61,7 @@ export async function runDailyAttendance(client: Client) {
 
     for (const config of settings) {
         try {
-            const channel = await client.channels.fetch(config.channelId) as TextChannel;
+            const channel = await client.channels.fetch(config.channelId) as TextChannel | ThreadChannel;
             if (channel) {
                 await channel.send({ embeds: [embed] });
             }

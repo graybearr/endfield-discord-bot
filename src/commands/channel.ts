@@ -7,7 +7,12 @@ export const data = new SlashCommandBuilder()
     .addChannelOption(option => 
         option.setName('channel')
             .setDescription('텍스트 채널 (미입력시 등록을 해제해요.)')
-            .addChannelTypes(ChannelType.GuildText)
+            .addChannelTypes(
+                ChannelType.GuildText,
+                ChannelType.PublicThread,
+                ChannelType.PrivateThread,
+                ChannelType.AnnouncementThread
+            )
             .setRequired(false)
     )
     .setDefaultMemberPermissions(PermissionFlagsBits.ManageChannels);
